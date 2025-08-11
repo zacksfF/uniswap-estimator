@@ -6,7 +6,7 @@ import (
 	"uniswap-est/intrenal/utils"
 )
 
-// BenchmarkCalculateAmountOut - THE 1INCH REQUIREMENT!
+// BenchmarkCalculateAmountOut 
 func BenchmarkCalculateAmountOut(b *testing.B) {
 	// Realistic Uniswap V2 pool values
 	amountIn := big.NewInt(1000000000)       // 1000 USDT (6 decimals)
@@ -16,7 +16,7 @@ func BenchmarkCalculateAmountOut(b *testing.B) {
 	reserveOut.SetString("50000000000000000000000", 10) // 50k ETH reserve
 
 	b.ResetTimer()
-	b.ReportAllocs() // Show allocations - 1inch cares about this!
+	b.ReportAllocs() // Show allocations
 
 	for i := 0; i < b.N; i++ {
 		_, _ = utils.CalculateAmountOut(amountIn, reserveIn, reserveOut)
